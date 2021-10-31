@@ -25,3 +25,15 @@ export const createProduct = async (req, res) => {
         res.status(409).json({error: err.message})
     }
 }
+
+export const getProduct = async (req,res) => {
+    const id = req.query.id
+    try{
+        const product = await Product.findOne({_id: id})    
+        res.status(200).json(product)
+    }catch(err){
+        res.status(404).json({error: err.message})
+    }
+    
+
+}
