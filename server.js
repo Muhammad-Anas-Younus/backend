@@ -3,6 +3,7 @@ import cors from "cors"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 import productRoutes from "./routes/products.js"
+import orderRoutes from "./routes/orders.js"
 
 
 const app = express()
@@ -23,6 +24,7 @@ app.use("/uploads", express.static("uploads"))
 mongoose.connect(process.env.DB_CONNECTION, {useUnifiedTopology: true, useNewUrlParser: true}).then(() => console.log("sever si running" + PORT)).catch(err => console.log(err))
 
 app.use("/products", productRoutes)
+app.use("/orders", orderRoutes)
 
 app.listen(PORT, () => {
     console.log("working")
